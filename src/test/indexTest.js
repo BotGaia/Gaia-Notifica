@@ -9,7 +9,7 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-describe('test', () => {
+describe('suiteTest', () => {
   it('get', (done) => {
     chai.request(app).get('/').end((err, res) => {
       res.should.have.status(200);

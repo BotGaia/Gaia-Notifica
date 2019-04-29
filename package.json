@@ -1,5 +1,5 @@
 {
-  "name": "gaia-gateway",
+  "name": "gaia-notifica",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BotGaia/Gaia-Gateway.git"
+    "url": "git+https://github.com/BotGaia/Gaia-Notifica.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BotGaia/Gaia-Gateway/issues"
+    "url": "https://github.com/BotGaia/Gaia-Notifica/issues"
   },
-  "homepage": "https://github.com/BotGaia/Gaia-Gateway#readme",
+  "homepage": "https://github.com/BotGaia/Gaia-Notifica#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",

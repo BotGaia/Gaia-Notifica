@@ -1,34 +1,21 @@
-# Gaia-Gateway
+# Gaia-Notifica
 
 ## Objetivo
-Esse serviço é responsável por fazer toda a ponte da Gaia, um chatbot, com os microsserviços.
+Esse serviço é responsável por fazer o cronjob do usuário de acordo com as suas preferências.
 
 ## Como usar
 
 ### Como rodar
-Primeiro tem que instalar o docker e o docker compose, em seguida rode o projeto como desenvolvimento da seguinte maneira:
+Primeiro tem que instalar o docker, em seguida rode o projeto como desenvolvimento da seguinte maneira:
 
-``` $ sudo docker build -t gaiagateway . ```
+```$ sudo docker-compose up --build```
 
-Após o build, rode esse outro comando:
+Para rodar os testes, rode esse comando:
 
-```$ docker run --rm -it -p 3002:3002 -v $PWD:/app -v /app/node_modules gaiagateway```
+``` $ sudo docker-compose run gaianotifica /bin/sh -c "cd /app; npm i; npm run test" ```
 
 Para rodar a folha de estilo, utilize este comando:
 
-``` $ docker run --rm -v $PWD:/app -v /app/node_modules gaiagateway /bin/sh -c "cd /app; npm run lint" ```
-
-Para rodar os testes, utilize:
-
-``` $ docker run --rm -v $PWD:/app -v /app/node_modules gaiagateway /bin/sh -c "cd /app; npm run test" ```
+``` $ sudo docker-compose run gaianotifica /bin/sh -c "cd /app; npm i; npm run lint" ```
 
 ### Endpoints
-<table>
-	<tr>
-		<td>GET</td>
-		<td>localhost:3001/local?address={VALOR}</td>
-		<td>address</td>
-		<td>String</td>
-		<td>Recebe as coordenadas do local informados</td>
-	</tr>
-</table>
