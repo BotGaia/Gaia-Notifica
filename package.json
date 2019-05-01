@@ -24,7 +24,8 @@
     "express": "^4.16.4",
     "chai-http": "^4.2.1",
     "chai": "^4.2.0",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "mongoose": "^5.4.20"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
