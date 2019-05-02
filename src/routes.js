@@ -10,6 +10,7 @@ router.post('/registerUser', (req, res) => {
   user.setLocal(req.body.local);
   user.setNotificationDays(req.body.notificationDays);
   user.setNotificationTime(req.body.notificationTime);
+
 });
 
 module.exports = app => app.use('/', router);

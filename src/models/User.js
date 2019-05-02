@@ -33,4 +33,26 @@ module.exports = class User {
   setLocal(local) {
       this.local = local;
   }
+
+  findMe() {
+    return new Promise((resolve) => {
+      UserModel.findOne({ name: this.user.id },
+        (err) => { if (err) { resolve(false); } }).then((user) => {
+        if (user) {
+          this.user = user;
+          resolve(true);
+        }
+        resolve(false);
+      });
+    });
+  }
+
+  saveUser() {
+    return new Promise((resolve) => {
+      this.user.save().then(() => {
+        resolve();
+      });
+    });
+  }
+
 } 
