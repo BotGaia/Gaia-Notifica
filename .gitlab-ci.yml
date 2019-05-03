@@ -25,12 +25,12 @@ buildLocal:
 testCheck:
   stage: test
   script:
-    - docker-compose run gaianotifica /bin/sh -c "cd /app; npm i; npm run test"
+    - docker-compose run gaianotifica npm run test
 
 staticAnalysis:
   stage: quality
   script:
-    - docker-compose run gaianotifica /bin/sh -c "cd /app; npm i; npm run lint"
+    - docker-compose run gaianotifica npm run lint
 
 deployHomolog:
   stage: deploy
