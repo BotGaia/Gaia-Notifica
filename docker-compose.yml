@@ -10,7 +10,7 @@ services:
       - .:/app
       - /app/node_modules
     ports:
-      - 3003:3003
+      - 172.29.42.125:3003:3003
     command: npm run dev
     depends_on:
       - mongo

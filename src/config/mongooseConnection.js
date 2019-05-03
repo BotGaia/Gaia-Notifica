@@ -14,7 +14,7 @@ module.exports = {
       bufferMaxEntries: 0,
       useNewUrlParser: true,
     };
-      mongoose.connect('mongodb://mongo:27019/gaianotifica',options);
-      resolve();
-    }),
+    mongoose.connect('mongodb://mongo:27019/gaianotifica', options);
+    resolve();
+  }),
 };

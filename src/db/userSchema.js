@@ -5,6 +5,6 @@ const UserSchema = new mongoose.Schema({
   sport: String,
   notificationDays: String,
   notificationTime: String,
-  local : String
+  local: String,
 });
 module.exports = UserSchema;

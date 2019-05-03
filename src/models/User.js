@@ -15,7 +15,7 @@ module.exports = class User {
   }
 
   setTelegramId(telegramId) {
-      this.user.telegramId = telegramId;
+    this.user.telegramId = telegramId;
   }
 
   getId() {
@@ -23,7 +23,7 @@ module.exports = class User {
   }
 
   setSport(sport) {
-      this.user.sport = sport;
+    this.user.sport = sport;
   }
 
   getSport() {
@@ -31,7 +31,7 @@ module.exports = class User {
   }
 
   setNotificationDays(notificationDays) {
-      this.user.notificationDays = notificationDays;
+    this.user.notificationDays = notificationDays;
   }
 
   getNotificationDays() {
@@ -39,7 +39,7 @@ module.exports = class User {
   }
 
   setNotificationTime(notificationTime) {
-      this.user.notificationTime = notificationTime;
+    this.user.notificationTime = notificationTime;
   }
 
   getNotificationTime() {
@@ -47,7 +47,7 @@ module.exports = class User {
   }
 
   setLocal(local) {
-      this.user.local = local;
+    this.user.local = local;
   }
 
   getLocal() {
@@ -61,6 +61,7 @@ module.exports = class User {
       });
     });
   }
+
   findMe() {
     return new Promise((resolve) => {
       UserModel.findOne({ telegramId: this.user.telegramId },
@@ -73,4 +74,4 @@ module.exports = class User {
       });
     });
   }
-} 
+};
