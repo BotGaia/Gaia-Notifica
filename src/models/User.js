@@ -4,9 +4,9 @@ const UserSchema = require('../db/userSchema');
 const UserModel = mongoose.model('UserModel', UserSchema);
 
 module.exports = class User {
-  constructor(id) {
+  constructor() {
     this.user = new UserModel({
-      id,
+      id: '',
       sport: '',
       notificationDays: '',
       notificationTime: '',
@@ -53,7 +53,7 @@ module.exports = class User {
   getLocal() {
     return local;
   }
-  
+
   saveUser() {
     return new Promise((resolve) => {
       this.user.save().then(() => {
