@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 module.exports = {
-saveUser() {
+saveNewUser() {
     return new Promise((resolve) => {
       const user = new User();
       
