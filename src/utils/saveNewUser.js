@@ -3,14 +3,13 @@ module.exports = {
   saveNewUser: (jsonAnswer, user) => {
     try {
       return new Promise((resolve) => {
-        console.log("ta passando na promessa");
         user.findMe().then((isFound) => {
           if (isFound) {
-            console.log("ta salvo no banco hahahaha");
+            console.log('Tá salvo no banco');
             resolve(user);
           } else {
             console.log("nao ta salvo no banco");
-            user.setTelegramId(jsonAnswer.id);
+            user.setTelegramId(jsonAnswer.telegramId);
             user.setSport(jsonAnswer.sport);
             user.setLocal(jsonAnswer.local);
             user.setNotificationDays(jsonAnswer.notificationDays);
@@ -18,19 +17,11 @@ module.exports = {
             user.saveUser();
             resolve(user);
           }
-          console.log("olaaaaaaa");
         });
       });
     }
-    catch {
-      console.log("deu ruim ");
+    catch(err){
       res.send("-------------------deu ruim =( -------------------");
     }
-
-
   }
-
-
-
-
 }

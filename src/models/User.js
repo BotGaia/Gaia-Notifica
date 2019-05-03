@@ -4,9 +4,9 @@ const UserSchema = require('../db/userSchema');
 const UserModel = mongoose.model('UserModel', UserSchema);
 
 module.exports = class User {
-  constructor() {
+  constructor(telegramId) {
     this.user = new UserModel({
-      telegramId: '',
+      telegramId,
       sport: '',
       notificationDays: '',
       notificationTime: '',
