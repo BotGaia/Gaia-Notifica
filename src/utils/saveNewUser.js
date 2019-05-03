@@ -10,7 +10,7 @@ module.exports = {
             resolve(user);
           } else {
             console.log("nao ta salvo no banco");
-            user.setId(jsonAnswer.id);
+            user.setTelegramId(jsonAnswer.id);
             user.setSport(jsonAnswer.sport);
             user.setLocal(jsonAnswer.local);
             user.setNotificationDays(jsonAnswer.notificationDays);

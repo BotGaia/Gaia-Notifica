@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  id: String,
+  telegramId: String,
   sport: String,
   notificationDays: String,
   notificationTime: String,

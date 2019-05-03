@@ -6,7 +6,7 @@ const UserModel = mongoose.model('UserModel', UserSchema);
 module.exports = class User {
   constructor() {
     this.user = new UserModel({
-      id: '',
+      telegramId: '',
       sport: '',
       notificationDays: '',
       notificationTime: '',
@@ -14,44 +14,44 @@ module.exports = class User {
     });
   }
 
-  setId(id) {
-      this.id = id;
+  setTelegramId(telegramId) {
+      this.user.telegramId = telegramId;
   }
 
   getId() {
-    return id;
+    return this.user.telegramId;
   }
 
   setSport(sport) {
-      this.sport = sport;
+      this.user.sport = sport;
   }
 
   getSport() {
-    return sport;
+    return this.user.sport;
   }
 
   setNotificationDays(notificationDays) {
-      this.notificationDays = notificationDays;
+      this.user.notificationDays = notificationDays;
   }
 
   getNotificationDays() {
-    return notificationDays;
+    return this.user.notificationDays;
   }
 
   setNotificationTime(notificationTime) {
-      this.notificationTime = notificationTime;
+      this.user.notificationTime = notificationTime;
   }
 
   getNotificationTime() {
-    return notificationTime;
+    return this.user.notificationTime;
   }
 
   setLocal(local) {
-      this.local = local;
+      this.user.local = local;
   }
 
   getLocal() {
-    return local;
+    return this.user.local;
   }
 
   saveUser() {
@@ -63,7 +63,7 @@ module.exports = class User {
   }
   findMe() {
     return new Promise((resolve) => {
-      UserModel.findOne({ id: this.user.id },
+      UserModel.findOne({ telegramId: this.user.telegramId },
         (err) => { if (err) { resolve(false); } }).then((user) => {
         if (user) {
           this.user = user;
