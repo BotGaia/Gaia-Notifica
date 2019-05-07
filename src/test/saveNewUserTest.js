@@ -8,7 +8,7 @@ const routes = require('../routes')(app);
 
 const user = new User();
 describe('/POST registerUser', () => {
-  it('Save User', (done) => {
+  it('Register User', (done) => {
     const mockJson = {
       telegramId: 'testId',
     };
@@ -22,5 +22,19 @@ describe('/POST registerUser', () => {
         res.body.user.telegramId.should.eql('testId');
         done();
       });
+  });
+});
+
+describe('Save user', () => {
+  it('Save user', (done) => {
+    const user = new User('testId2');
+
+    user.saveUser().then(() => {
+      user.findMe().then((isFound) => {
+        isFound.should.eql(true);
+        user.getTelegramId().should.eql('testId2');
+        done();
+      });
+    });
   });
 });

@@ -18,6 +18,10 @@ module.exports = class User {
     this.user.telegramId = telegramId;
   }
 
+  getTelegramId() {
+    return this.user.telegramId;
+  }
+
   getId() {
     return this.user.telegramId;
   }
