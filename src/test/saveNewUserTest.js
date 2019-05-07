@@ -6,11 +6,15 @@ const User = require('../models/User');
 const app = require('../index');
 const routes = require('../routes')(app);
 
-const user = new User();
 describe('/POST registerUser', () => {
   it('Register User', (done) => {
     const mockJson = {
-      telegramId: 'testId',
+      telegramId: 'testId2',
+      sport: '',
+      local: '',
+      notificationDays: '',
+      notificationTime: '',
+
     };
 
     chai.request(routes)
@@ -19,7 +23,11 @@ describe('/POST registerUser', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        res.body.user.telegramId.should.eql('testId');
+        res.body.user.telegramId.should.eql('testId2');
+        res.body.user.sport.should.eql('');
+        res.body.user.local.should.eql('');
+        res.body.user.notificationDays.should.eql('');
+        res.body.user.notificationTime.should.eql('');
         done();
       });
   });
