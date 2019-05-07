@@ -10,6 +10,7 @@ app.get('/', (req, res) => {
   res.json({ Hello: 'World' });
 });
 
+require('./routes')(app);
 
 app.listen(3003);
 
