@@ -1,3 +1,4 @@
+
 [![pipeline status](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/pipeline.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![coverage report](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/coverage.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -35,4 +36,4 @@ Aqui se encontra todos os endpoints desse serviço. Todos os endpoints se encont
 
 |Requisição|Endpoint|Parâmetro:Tipo|Descrição|
 |:--------:|:------:|:------------:|:-------:|
-|POST|/userRegister|JSON|Recebe as informações de um user em formato JSON e salva suas preferências|
+|POST|/userRegister|telegramId: String,<br> sport: Array,<br> notificationDays: Array,<br> notificationTime: Array,<br> local: Array|Recebe as informações de um user em formato JSON e salva suas preferências|

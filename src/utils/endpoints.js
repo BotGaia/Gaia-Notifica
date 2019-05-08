@@ -4,11 +4,14 @@ module.exports = {
       {
         type: 'POST',
         endpoint: '/userRegister',
-        parameters: [
-          {
-            type: 'JSON',
-          },
-        ],
+        JSON: {
+          telegramId: 'String',
+          sport: 'Array',
+          notificationDays: 'Array',
+          notificationTime: 'Array',
+          local: 'Array',
+        },
+        description: 'Recebe as informações de um user em formato JSON e salva suas preferências',
       },
     ];
 
