@@ -6,10 +6,10 @@ module.exports = {
         endpoint: '/userRegister',
         JSON: {
           telegramId: 'String',
-          sport: 'Array',
+          sport: 'String',
           notificationDays: 'Array',
           notificationTime: 'Array',
-          local: 'Array',
+          local: 'String',
         },
         description: 'Recebe as informações de um user em formato JSON e salva suas preferências',
       },

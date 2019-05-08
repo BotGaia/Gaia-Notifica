@@ -7,10 +7,10 @@ module.exports = class User {
   constructor(telegramId) {
     this.user = new UserModel({
       telegramId,
-      sport: [],
+      sport: '',
       notificationDays: [],
       notificationTime: [],
-      local: [],
+      local: '',
     });
   }
 
@@ -23,11 +23,11 @@ module.exports = class User {
   }
 
   setSport(sport) {
-    this.user.sport.push(sport);
+    this.user.sport = sport;
   }
 
-  getSport(index) {
-    return this.user.sport[index];
+  getSport() {
+    return this.user.sport;
   }
 
   setNotificationDays(notificationDays) {
@@ -47,11 +47,11 @@ module.exports = class User {
   }
 
   setLocal(local) {
-    this.user.local.push(local);
+    this.user.local = local;
   }
 
-  getLocal(index) {
-    return this.user.local[index];
+  getLocal() {
+    return this.user.local;
   }
 
   saveUser() {

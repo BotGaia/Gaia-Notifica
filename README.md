@@ -36,4 +36,4 @@ Aqui se encontra todos os endpoints desse serviço. Todos os endpoints se encont
 
 |Requisição|Endpoint|Parâmetro:Tipo|Descrição|
 |:--------:|:------:|:------------:|:-------:|
-|POST|/userRegister|telegramId: String,<br> sport: Array,<br> notificationDays: Array,<br> notificationTime: Array,<br> local: Array|Recebe as informações de um user em formato JSON e salva suas preferências|
+|POST|/userRegister|telegramId: String,<br> sport: String,<br> notificationDays: Array,<br> notificationTime: Array,<br> local: String|Recebe as informações de um user em formato JSON e salva suas preferências|
