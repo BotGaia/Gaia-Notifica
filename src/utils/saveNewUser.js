@@ -1,5 +1,4 @@
 module.exports = {
-
   saveNewUser: (jsonAnswer, user) => new Promise((resolve) => {
     user.findMe().then((isFound) => {
       if (isFound) {

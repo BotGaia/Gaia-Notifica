@@ -35,4 +35,4 @@ Aqui se encontra todos os endpoints desse serviço. Todos os endpoints se encont
 
 |Requisição|Endpoint|Parâmetro:Tipo|Descrição|
 |:--------:|:------:|:------------:|:-------:|
-|-|-|-|-|
+|POST|/userRegister|JSON|Recebe as informações de um user em formato JSON e salva suas preferências|

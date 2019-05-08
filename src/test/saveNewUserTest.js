@@ -10,11 +10,10 @@ describe('/POST registerUser', () => {
   it('Register User', (done) => {
     const mockJson = {
       telegramId: 'testId2',
-      sport: '',
-      local: '',
-      notificationDays: '',
-      notificationTime: '',
-
+      sport: [''],
+      local: [''],
+      notificationDays: [''],
+      notificationTime: [''],
     };
 
     chai.request(routes)
@@ -24,10 +23,10 @@ describe('/POST registerUser', () => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.user.telegramId.should.eql('testId2');
-        res.body.user.sport.should.eql('');
-        res.body.user.local.should.eql('');
-        res.body.user.notificationDays.should.eql('');
-        res.body.user.notificationTime.should.eql('');
+        res.body.user.sport.should.eql(['']);
+        res.body.user.local.should.eql(['']);
+        res.body.user.notificationDays.should.eql(['']);
+        res.body.user.notificationTime.should.eql(['']);
         done();
       });
   });
