@@ -23,7 +23,7 @@ module.exports = class User {
   }
 
   setSport(sport) {
-    this.user.sport.push(sport)
+    this.user.sport.push(sport);
   }
 
   getSport(index) {
@@ -31,7 +31,7 @@ module.exports = class User {
   }
 
   setNotificationDays(notificationDays) {
-    this.user.notificationDays.push(notificationDays)
+    this.user.notificationDays.push(notificationDays);
   }
 
   getNotificationDays(index) {
