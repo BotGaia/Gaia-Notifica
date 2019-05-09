@@ -22,6 +22,9 @@ router.post('/registerUser', (req, res) => {
   });
 });
 
+router.post('./createNotification', (req, res) => {
+});
+
 router.get('/dateTime', (req, res) => {
   res.send(date.scheduleFunction());
 });
