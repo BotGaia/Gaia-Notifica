@@ -27,6 +27,10 @@ module.exports = class User {
     return this.user.notification;
   }
 
+  appendNotification(notification){
+    this.user.notification.push(notification);
+  }
+
   saveUser() {
     return new Promise((resolve) => {
       this.user.save().then(() => {

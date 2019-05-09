@@ -23,8 +23,8 @@ router.post('/registerUser', (req, res) => {
   });
 });
 
-router.post('./createNotification', (req, res) => {
-  saveNotification.saveNotification(req.body).then(() => {
+router.post('/createNotification', (req, res) => {
+  saveNotification.saveNotification(req.body).then((user) => {
     res.send(user);
   });
 });

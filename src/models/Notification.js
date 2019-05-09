@@ -16,7 +16,7 @@ module.exports = class Notification {
     return this.telegramId;
   }
 
-  setSport(sport) {
+  appendSport(sport) {
     this.sport.push(sport);
   }
 
@@ -24,7 +24,7 @@ module.exports = class Notification {
     return this.sport[index];
   }
 
-  setDays(days) {
+  appendDay(days) {
     this.days.push(days);
   }
 
@@ -32,7 +32,7 @@ module.exports = class Notification {
     return this.days[index];
   }
 
-  setHours(hours) {
+  appendHour(hours) {
     this.hours.push(hours);
   }
 
@@ -40,7 +40,7 @@ module.exports = class Notification {
     return this.hours[index];
   }
 
-  setLocal(local) {
+  appendLocal(local) {
     this.local.push(local);
   }
 
