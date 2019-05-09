@@ -1,9 +1,10 @@
 const UserModel = mongoose.model('UserModel', UserSchema);
-co;
+const Notification = require('../models/Notification');
+const User = require('../models/User');
 
 module.exports = {
   saveNotification: requestBody => new Promise((resolve) => {
-    const user = new user(requestBody.telegramId);
+    const user = new User(requestBody.telegramId);
     const notification = new Notification(requestBody.telegramId);
 
     for (let i = 0; i < requestBody.sport.lenght; i += 1) {
