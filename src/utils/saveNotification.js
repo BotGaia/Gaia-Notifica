@@ -1,6 +1,9 @@
+const mongoose = require('mongoose');
+const UserSchema = require('../db/userSchema');
 const UserModel = mongoose.model('UserModel', UserSchema);
 const Notification = require('../models/Notification');
 const User = require('../models/User');
+
 
 module.exports = {
   saveNotification: requestBody => new Promise((resolve) => {
