@@ -12,22 +12,10 @@ module.exports = {
     });
   }),
 
-  saveNewNotification: (requestBody) => new Promise((resolve) => {
-    const user = new user(requestBody.telegramId);
 
-    user.findMe().then((isFound) => {
-      if (isFound) {        
-        user.setNotification(addNotification(requestBody));
-      } else {
-        user.setTelegramId(requestBody.telegramId);
-        user.setNotification(addNotification(requestBody));
-      }
-    });
-  }),
-
-  addNotification: (requestBody) => new Promisse((resolve) => { 
+  addNotification: requestBody => new Promisse((resolve) => {
     let i;
-    const notification = new Notification();
+    const notification = new Notification(requestBody.telegramId);
 
     notification.setTelegramId(requestBody.telegramId);
 

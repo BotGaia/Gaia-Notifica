@@ -1,6 +1,7 @@
 const express = require('express');
 const date = require('../src/utils/scheduler');
 const newUser = require('./utils/saveNewUser');
+const saveNotification = require('./utils/saveNotification');
 const User = require('../src/models/User');
 const mongooseConnection = require('./config/mongooseConnection');
 const endpoints = require('./utils/endpoints');
@@ -23,6 +24,9 @@ router.post('/registerUser', (req, res) => {
 });
 
 router.post('./createNotification', (req, res) => {
+  saveNotification.saveNotification(req.body).then(() => {
+    res.send(user);
+  });
 });
 
 router.get('/dateTime', (req, res) => {
