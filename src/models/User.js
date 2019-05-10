@@ -6,6 +6,7 @@ const UserModel = mongoose.model('UserModel', UserSchema);
 module.exports = class User {
   constructor(telegramId) {
     this.user = new UserModel({
+      class: 'user',
       telegramId,
       notification: [],
     });
@@ -27,7 +28,7 @@ module.exports = class User {
     return this.user.notification;
   }
 
-  appendNotification(notification){
+  appendNotification(notification) {
     this.user.notification.push(notification);
   }
 

@@ -2,7 +2,7 @@ version: '3'
 
 services:
   gaianotifica:
-    image: caleberios/gaia-notifica:latest
+    image: caleberios/gaia-notifica:homolog
     restart: always
     environment:
       - ENVIRONMENT=dev
