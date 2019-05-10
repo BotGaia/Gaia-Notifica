@@ -34,7 +34,8 @@ module.exports = {
   },
 
   dailySchedule: () => {
-    schedule.scheduleJob('0 0 0 * * *', () => {
+    schedule.scheduleJob('0 40 14 * * *', () => {
+      console.log('dailySchedule now '+ new Date.prototype.toLocaleTimeString());
       notificationSchedule();
     });
   },
@@ -44,6 +45,7 @@ module.exports = {
     const notificationArray = getDailyNotifications(weekDay);
 
     for (let i = 0; i < notificationArray.length; i += 1) {
+      console.log('notificationSchedule now');
       makeSchedule(notificationArray[i]);
     }
   },
@@ -71,7 +73,8 @@ module.exports = {
 
     for (let i = 0; i < notification.hours.length; i += 1) {
       schedule.scheduleJob(`* * ${notification.hours[i]} * * *`, () => {
-
+        console.log('makeSchedule now '+ new Date.prototype.toLocaleTimeString());
+        postNotification(notification);
         return;
       });
 
@@ -79,7 +82,7 @@ module.exports = {
   },
   postNotification: (notification) => {
     return new Promise((resolve) => {
-      axios.post('http://68.183.43.29:30000/notify', notification).then((res) => {
+      axios.post('/notify', notification).then((res) => {
         resolve(res.body);
       })
     })

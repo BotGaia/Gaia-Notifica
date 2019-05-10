@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 require('./routes')(app);
 
-scheduler.schedule();
+scheduler.dailySchedule();
 
 app.listen(3003);
 

@@ -30,6 +30,8 @@ module.exports = class User {
 
   appendNotification(notification) {
     this.user.notification.push(notification);
+    console.log('the notfication:');
+    console.log(notification);
   }
 
   saveUser() {

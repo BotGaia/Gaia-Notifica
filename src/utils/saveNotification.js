@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const UserSchema = require('../db/userSchema');
 const Notification = require('../models/Notification');
 const User = require('../models/User');
+const UserModel = mongoose.model('UserModel', UserSchema);
 
 
 module.exports = {
@@ -26,14 +27,18 @@ module.exports = {
 
 
     user.findMe().then((isFound) => {
-      user.appendNotification(Notification);
+      user.appendNotification(notification);
       if (isFound) {
         UserModel.update({ telegramId: requestBody.telegramId }, user).then(() => {
           resolve(user);
-        });
+        }).catch((err) => {
+          console.log('Update error:')
+          console.log(err);
+        })
       } else {
         user.saveUser().then(() => resolve(user));
       }
     });
+
   }),
 };

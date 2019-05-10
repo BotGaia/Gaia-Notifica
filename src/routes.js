@@ -33,4 +33,8 @@ router.get('/dateTime', (req, res) => {
   res.send(date.scheduleFunction());
 });
 
+router.post('/notify', (req, res) => {
+  console.log('body:\n'+req.body);
+});
+
 module.exports = app => app.use('/', router);
