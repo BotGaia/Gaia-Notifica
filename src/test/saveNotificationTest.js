@@ -1,3 +1,6 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const chai = require('chai');
 const SaveNotification = require('../utils/saveNotification');
 
@@ -8,10 +11,10 @@ const mockJson = {
   times: [
     {
       hour: 30,
-      minute: 70
-    }
+      minute: 70,
+    },
   ],
-  locals: ['Fabrica do Papai Noel']
+  locals: ['Fabrica do Papai Noel'],
 };
 
 describe('Save notification', () => {
@@ -21,6 +24,5 @@ describe('Save notification', () => {
       user.getNotification(0).sports[0].should.eql('testSport');
       done();
     });
-
   });
 });

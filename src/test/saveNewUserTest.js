@@ -10,7 +10,7 @@ describe('/POST registerUser', () => {
   it('Register User', (done) => {
     const mockJson = {
       telegramId: 'testId2',
-      notifications: ['']
+      notifications: [''],
     };
 
     chai.request(routes)
@@ -37,6 +37,5 @@ describe('Save user', () => {
         done();
       });
     });
-    
   });
 });

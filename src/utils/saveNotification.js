@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const UserSchema = require('../db/userSchema');
 const Notification = require('../models/Notification');
 const User = require('../models/User');
+
 const UserModel = mongoose.model('UserModel', UserSchema);
 
 
@@ -24,11 +25,10 @@ module.exports = {
     for (let i = 0; i < requestBody.locals.length; i += 1) {
       notification.appendLocal(requestBody.locals[i]);
     }
-    
+
     user.findMe().then(() => {
       user.appendNotification(notification);
       user.saveUser().then(() => resolve(user));
     });
-
   }),
 };

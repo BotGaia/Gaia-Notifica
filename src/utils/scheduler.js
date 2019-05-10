@@ -35,7 +35,7 @@ function getDateTime() {
     }
   }
 
-  return (weekDay)
+  return (weekDay);
 }
 
 function getDailyNotifications(weekDay) {
@@ -58,11 +58,9 @@ function getDailyNotifications(weekDay) {
 }
 
 async function makeSchedule(notification) {
-
   for (let i = 0; i < notification.times.length; i += 1) {
     schedule.scheduleJob(`${(notification.times[i].minute).toString()} ${(notification.times[i].hour + 3).toString()} * * *`, () => {
       postNotification(notification);
-      return;
     });
   }
 }
@@ -81,4 +79,6 @@ function dailySchedule() {
   });
 }
 
-module.exports = {dailySchedule, postNotification, makeSchedule, getDailyNotifications, getDateTime, notificationSchedule}
+module.exports = {
+  dailySchedule, postNotification, makeSchedule, getDailyNotifications, getDateTime, notificationSchedule,
+};

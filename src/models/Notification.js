@@ -1,5 +1,3 @@
-const Time = require('./Time');
-
 module.exports = class Notification {
   constructor(telegramId) {
     this.telegramId = telegramId;
