@@ -1,10 +1,12 @@
+const Time = require('./Time');
+
 module.exports = class Notification {
   constructor(telegramId) {
     this.telegramId = telegramId;
-    this.sport = [];
+    this.sports = [];
     this.days = [];
-    this.hours = [];
-    this.local = [];
+    this.times = [];
+    this.locals = [];
   }
 
 
@@ -17,34 +19,34 @@ module.exports = class Notification {
   }
 
   appendSport(sport) {
-    this.sport.push(sport);
+    this.sports.push(sport);
   }
 
   getSport(index) {
-    return this.sport[index];
+    return this.sports[index];
   }
 
-  appendDay(days) {
-    this.days.push(days);
+  appendDay(day) {
+    this.days.push(day);
   }
 
-  getDays(index) {
+  getDay(index) {
     return this.days[index];
   }
 
-  appendHour(hours) {
-    this.hours.push(hours);
+  appendTime(time) {
+    this.times.push(time);
   }
 
-  getHours(index) {
-    return this.hours[index];
+  getTimes(index) {
+    return this.Times[index];
   }
 
   appendLocal(local) {
-    this.local.push(local);
+    this.locals.push(local);
   }
 
   getLocal(index) {
-    return this.local[index];
+    return this.locals[index];
   }
 };

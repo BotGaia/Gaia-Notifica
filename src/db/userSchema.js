@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   class: String,
   telegramId: String,
-  notification: Array,
+  notifications: Array,
 });
 
 module.exports = UserSchema;

@@ -8,7 +8,7 @@ module.exports = class User {
     this.user = new UserModel({
       class: 'user',
       telegramId,
-      notification: [],
+      notifications: [],
     });
   }
 
@@ -20,18 +20,16 @@ module.exports = class User {
     return this.user.telegramId;
   }
 
-  setNotification(notification) {
-    this.user.notification = notification;
+  setNotification(notifications) {
+    this.user.notifications = notifications;
   }
 
   getNotification() {
-    return this.user.notification;
+    return this.user.notifications;
   }
 
   appendNotification(notification) {
-    this.user.notification.push(notification);
-    console.log('the notfication:');
-    console.log(notification);
+    this.user.notifications.push(notification);
   }
 
   saveUser() {

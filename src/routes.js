@@ -34,7 +34,7 @@ router.get('/dateTime', (req, res) => {
 });
 
 router.post('/notify', (req, res) => {
-  console.log('body:\n'+req.body);
+  res.end()
 });
 
 module.exports = app => app.use('/', router);
