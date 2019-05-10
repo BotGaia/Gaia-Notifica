@@ -27,7 +27,7 @@ module.exports = {
     
     user.findMe().then(() => {
       user.appendNotification(notification);
-        user.saveUser().then(() => resolve(user));
+      user.saveUser().then(() => resolve(user));
     });
 
   }),

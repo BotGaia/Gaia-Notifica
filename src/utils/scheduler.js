@@ -17,7 +17,6 @@ function notificationSchedule() {
 
 function getDateTime() {
   const today = new Date();
-  let date = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
   let time = today.getHours() - 3;
   let weekDay = today.getDay();
   if (time <= 0) {
@@ -36,9 +35,6 @@ function getDateTime() {
     }
   }
 
-  const hours = `${time.toString()}:${today.getMinutes()}:${today.getSeconds()}`;
-  const dateTime = `${date.toString()} ${hours.toString()}`;
-  // return (dateTime);
   return (weekDay)
 }
 
@@ -68,24 +64,21 @@ async function makeSchedule(notification) {
       postNotification(notification);
       return;
     });
-
   }
 }
 
 function postNotification(notification) {
   return new Promise((resolve) => {
-    axios.post('http://localhost:3003/notify', notification).then((res) => {
+    axios.post('http://68.183.43.29:30000/notify', notification).then((res) => {
       resolve(res.body);
     });
   });
 }
 
-module.exports = {
+function dailySchedule() {
+  schedule.scheduleJob('0 0 3 * * *', () => {
+    notificationSchedule();
+  });
+}
 
-  dailySchedule: () => {
-    schedule.scheduleJob('0 0 3 * * *', () => {
-      notificationSchedule();
-    });
-  },
-  
-};
+module.exports = {dailySchedule, postNotification, makeSchedule, getDailyNotifications, getDateTime, notificationSchedule}

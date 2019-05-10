@@ -39,7 +39,7 @@ module.exports = class Notification {
   }
 
   getTimes(index) {
-    return this.Times[index];
+    return this.times[index];
   }
 
   appendLocal(local) {

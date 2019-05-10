@@ -20,12 +20,12 @@ module.exports = class User {
     return this.user.telegramId;
   }
 
-  setNotification(notifications) {
+  setNotifications(notifications) {
     this.user.notifications = notifications;
   }
 
-  getNotification() {
-    return this.user.notifications;
+  getNotification(index) {
+    return this.user.notifications[index];
   }
 
   appendNotification(notification) {
