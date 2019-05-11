@@ -1,4 +1,6 @@
-const chai = require('chai');
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const Time = require('../models/Time');
 
 

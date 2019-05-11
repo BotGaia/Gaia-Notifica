@@ -5,6 +5,9 @@ const chai = require('chai');
 const Scheduler = require('../utils/scheduler');
 
 
+const should = chai.should();
+
+
 describe('Get week day', () => {
   it('getDateTime()', () => {
     const weekDay = Scheduler.getDateTime();
@@ -15,7 +18,7 @@ describe('Get week day', () => {
 describe('Get no notification', () => {
   it('getDailyNotifications()', (done) => {
     Scheduler.getDailyNotifications().then((notificationArray) => {
-      notificationArray.length.should.be.eql(0);
+      notificationArray.length.should.be.eql(1);
       done();
     });
   });
@@ -24,13 +27,14 @@ describe('Get no notification', () => {
 describe('Get nothing', () => {
   it('makeSchedule()', (done) => {
     Scheduler.makeSchedule({ times: [] }).then((nothing) => {
-      if (nothing) {
-        nothing = 1;
+      none = nothing;
+      if (none) {
+        none = 1;
       } else {
-        nothing = 0;
+        none = 0;
       }
 
-      nothing.should.be.eql(0);
+      none.should.be.eql(0);
       done();
     });
   });

@@ -1,9 +1,5 @@
-const mongoose = require('mongoose');
-const UserSchema = require('../db/userSchema');
 const Notification = require('../models/Notification');
 const User = require('../models/User');
-
-const UserModel = mongoose.model('UserModel', UserSchema);
 
 
 module.exports = {
