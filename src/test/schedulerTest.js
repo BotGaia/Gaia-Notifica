@@ -26,7 +26,7 @@ describe('Get no notification', () => {
 
 describe('Get nothing', () => {
   it('makeSchedule()', (done) => {
-    Scheduler.makeSchedule({ times: [] }).then((nothing) => {
+    Scheduler.makeSchedule({ times: {} }).then((nothing) => {
       none = nothing;
       if (none) {
         none = 1;

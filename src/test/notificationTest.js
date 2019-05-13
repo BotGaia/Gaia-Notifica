@@ -17,13 +17,13 @@ describe('Append objects', () => {
   it('appends', () => {
     const notification = new Notification('testId62');
     notification.appendDay('test');
-    notification.appendSport('test');
-    notification.appendTime('test');
+    notification.setSport('test');
+    notification.setTime('test');
     notification.appendLocal('test');
 
     notification.getDay(0).should.eql('test');
-    notification.getSport(0).should.eql('test');
-    notification.getTimes(0).should.eql('test');
+    notification.getSport().should.eql('test');
+    notification.getTime().should.eql('test');
     notification.getLocal(0).should.eql('test');
   });
 });
