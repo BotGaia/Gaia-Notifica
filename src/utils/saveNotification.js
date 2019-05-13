@@ -6,17 +6,14 @@ module.exports = {
   saveNotification: requestBody => new Promise((resolve) => {
     const user = new User(requestBody.telegramId);
     const notification = new Notification(requestBody.telegramId);
-    for (let i = 0; i < requestBody.sports.length; i += 1) {
-      notification.appendSport(requestBody.sports[i]);
-    }
+
+    notification.setSport(requestBody.sport);
+    notification.setTime(requestBody.time);   
 
     for (let i = 0; i < requestBody.days.length; i += 1) {
       notification.appendDay(requestBody.days[i]);
     }
 
-    for (let i = 0; i < requestBody.times.length; i += 1) {
-      notification.appendTime(requestBody.times[i]);
-    }
 
     for (let i = 0; i < requestBody.locals.length; i += 1) {
       notification.appendLocal(requestBody.locals[i]);

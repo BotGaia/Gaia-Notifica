@@ -1,9 +1,9 @@
 module.exports = class Notification {
   constructor(telegramId) {
     this.telegramId = telegramId;
-    this.sports = [];
+    this.sport = '';
     this.days = [];
-    this.times = [];
+    this.time= '';
     this.locals = [];
   }
 
@@ -16,12 +16,12 @@ module.exports = class Notification {
     return this.telegramId;
   }
 
-  appendSport(sport) {
-    this.sports.push(sport);
+  setSport(sport) {
+    this.sport = sport;
   }
 
-  getSport(index) {
-    return this.sports[index];
+  getSport() {
+    return this.sport;
   }
 
   appendDay(day) {
@@ -32,12 +32,12 @@ module.exports = class Notification {
     return this.days[index];
   }
 
-  appendTime(time) {
-    this.times.push(time);
+  setTime(time) {
+    this.time = time;
   }
 
-  getTimes(index) {
-    return this.times[index];
+  getTime() {
+    return this.time;
   }
 
   appendLocal(local) {
