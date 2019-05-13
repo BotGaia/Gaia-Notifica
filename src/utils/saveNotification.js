@@ -13,7 +13,6 @@ module.exports = {
       notification.appendDay(requestBody.days[i]);
     }
 
-
     for (let i = 0; i < requestBody.locals.length; i += 1) {
       notification.appendLocal(requestBody.locals[i]);
     }

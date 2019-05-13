@@ -6,7 +6,7 @@ const User = require('../models/User');
 const app = require('../index');
 const routes = require('../routes')(app);
 
-describe('/POST registerUser', () => {
+describe('Save User test', () => {
   it('Register User', (done) => {
     const mockJson = {
       telegramId: 'testId2',
@@ -24,9 +24,7 @@ describe('/POST registerUser', () => {
         done();
       });
   });
-});
 
-describe('Save user', () => {
   it('Save user', (done) => {
     const user = new User('testId2');
 

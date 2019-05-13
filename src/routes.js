@@ -8,7 +8,6 @@ const endpoints = require('./utils/endpoints');
 
 const router = express.Router();
 
-
 mongooseConnection.connect();
 
 router.get('/', (req, res) => {

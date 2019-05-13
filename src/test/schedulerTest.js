@@ -6,23 +6,19 @@ const Scheduler = require('../utils/scheduler');
 
 const should = chai.should();
 
-describe('Get week day', () => {
+describe('Scheduler test', () => {
   it('getDateTime()', () => {
     const weekDay = Scheduler.getDateTime();
     weekDay.should.be.within(0, 6);
   });
-});
 
-describe('Get no notification', () => {
   it('getDailyNotifications()', (done) => {
     Scheduler.getDailyNotifications().then((notificationArray) => {
       notificationArray.length.should.be.eql(1);
       done();
     });
   });
-});
 
-describe('Get nothing', () => {
   it('makeSchedule()', (done) => {
     Scheduler.makeSchedule({ time: '' }).then((nothing) => {
       none = nothing;
