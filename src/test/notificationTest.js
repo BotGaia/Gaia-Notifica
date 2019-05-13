@@ -4,7 +4,6 @@
 const chai = require('chai');
 const Notification = require('../models/Notification');
 
-
 describe('Create Notification', () => {
   it('new Notification()', () => {
     const notification = new Notification('testId60');

@@ -3,10 +3,9 @@ module.exports = class Notification {
     this.telegramId = telegramId;
     this.sport = '';
     this.days = [];
-    this.time= '';
+    this.time = '';
     this.locals = [];
   }
-
 
   setTelegramId(telegramId) {
     this.telegramId = telegramId;

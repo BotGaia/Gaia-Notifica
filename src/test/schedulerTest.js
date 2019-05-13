@@ -4,9 +4,7 @@
 const chai = require('chai');
 const Scheduler = require('../utils/scheduler');
 
-
 const should = chai.should();
-
 
 describe('Get week day', () => {
   it('getDateTime()', () => {
@@ -26,7 +24,7 @@ describe('Get no notification', () => {
 
 describe('Get nothing', () => {
   it('makeSchedule()', (done) => {
-    Scheduler.makeSchedule({ times: {} }).then((nothing) => {
+    Scheduler.makeSchedule({ time: '' }).then((nothing) => {
       none = nothing;
       if (none) {
         none = 1;

@@ -56,11 +56,11 @@ function postNotification(notification) {
 }
 
 async function makeSchedule(notification) {
-
-  schedule.scheduleJob(`${(notification.time.minute).toString()} ${(notification.time.hour + 3).toString()} * * *`, () => {
-    postNotification(notification);
-  });
-
+  if (notification.time) {
+    schedule.scheduleJob(`${(notification.time.getMinutes()).toString()} ${(notification.time.getHours() + 3).toString()} * * *`, () => {
+      postNotification(notification);
+    });
+  }
 }
 
 function notificationSchedule() {
