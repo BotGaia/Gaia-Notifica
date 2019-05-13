@@ -3,12 +3,13 @@
 /* eslint-disable no-undef */
 const chai = require('chai');
 const Scheduler = require('../utils/scheduler');
+const TreatTime = require('../utils/treatTime');
 
 const should = chai.should();
 
 describe('Scheduler test', () => {
   it('getDateTime()', () => {
-    const weekDay = Scheduler.getDateTime();
+    const weekDay = TreatTime.getDateTime();
     weekDay.should.be.within(0, 6);
   });
 
