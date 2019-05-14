@@ -3,7 +3,8 @@ module.exports = class Notification {
     this.telegramId = telegramId;
     this.sport = '';
     this.days = [];
-    this.time = '';
+    this.hours = '';
+    this.minutes = '';
     this.locals = [];
   }
 
@@ -31,12 +32,17 @@ module.exports = class Notification {
     return this.days[index];
   }
 
-  setTime(time) {
-    this.time = time;
+  setTime(hours, minutes) {
+    this.hours = hours;
+    this.minutes = minutes;
   }
 
-  getTime() {
-    return this.time;
+  getHours() {
+    return this.hours;
+  }
+
+  getMinutes() {
+    return this.minutes;
   }
 
   appendLocal(local) {

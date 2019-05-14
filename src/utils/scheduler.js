@@ -34,8 +34,8 @@ function postNotification(notification) {
 }
 
 async function makeSchedule(notification) {
-  if (notification.time) {
-    schedule.scheduleJob(`${(notification.time.getMinutes()).toString()} ${(notification.time.getHours() + 3).toString()} * * *`, () => {
+  if (notification.minutes) {
+    schedule.scheduleJob(`${(notification.minutes).toString()} ${(notification.hours + 3).toString()} * * *`, () => {
       postNotification(notification);
     });
   }
@@ -52,7 +52,7 @@ function notificationSchedule() {
 
 function dailySchedule() {
   schedule.scheduleJob('0 0 3 * * *', () => {
-    notificationSchedule();
+  notificationSchedule();
   });
 }
 

@@ -5,9 +5,8 @@ module.exports = {
   saveNotification: requestBody => new Promise((resolve) => {
     const user = new User(requestBody.telegramId);
     const notification = new Notification(requestBody.telegramId);
-
     notification.setSport(requestBody.sport);
-    notification.setTime((new Date()).setHours(requestBody.hours, requestBody.minutes, 0));
+    notification.setTime(requestBody.hours, requestBody.minutes);
 
     requestBody.days.forEach((element) => {
       notification.appendDay(element);
