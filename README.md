@@ -1,4 +1,3 @@
-
 [![pipeline status](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/pipeline.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![coverage report](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/coverage.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
