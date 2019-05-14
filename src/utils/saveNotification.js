@@ -9,12 +9,12 @@ module.exports = {
     notification.setSport(requestBody.sport);
     notification.setTime((new Date()).setHours(requestBody.hours, requestBody.minutes, 0));
 
-    requestBody.days.forEach((i) => {
-      notification.appendDay(requestBody.days[i]);
+    requestBody.days.forEach((element) => {
+      notification.appendDay(element);
     });
 
-    requestBody.locals.forEach((i) => {
-      notification.appendLocal(requestBody.locals[i]);
+    requestBody.locals.forEach((element) => {
+      notification.appendLocal(element);
     });
 
     user.findMe().then(() => {
