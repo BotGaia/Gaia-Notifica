@@ -6,11 +6,9 @@ const UserModel = mongoose.model('UserModel', UserSchema);
 module.exports = class User {
   constructor(telegramId) {
     this.user = new UserModel({
+      class: 'user',
       telegramId,
-      sport: '',
-      notificationDays: [],
-      notificationTime: [],
-      local: '',
+      notifications: [],
     });
   }
 
@@ -22,36 +20,16 @@ module.exports = class User {
     return this.user.telegramId;
   }
 
-  setSport(sport) {
-    this.user.sport = sport;
+  setNotifications(notifications) {
+    this.user.notifications = notifications;
   }
 
-  getSport() {
-    return this.user.sport;
+  getNotification(index) {
+    return this.user.notifications[index];
   }
 
-  setNotificationDays(notificationDays) {
-    this.user.notificationDays.push(notificationDays);
-  }
-
-  getNotificationDays(index) {
-    return this.user.notificationDays[index];
-  }
-
-  setNotificationTime(notificationTime) {
-    this.user.notificationTime.push(notificationTime);
-  }
-
-  getNotificationTime(index) {
-    return this.user.notificationTime[index];
-  }
-
-  setLocal(local) {
-    this.user.local = local;
-  }
-
-  getLocal() {
-    return this.user.local;
+  appendNotification(notification) {
+    this.user.notifications.push(notification);
   }
 
   saveUser() {

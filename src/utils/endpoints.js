@@ -11,10 +11,22 @@ module.exports = {
           notificationTime: 'Array',
           local: 'String',
         },
-        description: 'Recebe as informações de um user em formato JSON e salva suas preferências',
+        description: 'Receives the user information in JSON format and saves its preferences',
+      },
+      {
+        type: 'POST',
+        endpoint: '/createNotification',
+        JSON: {
+          telegramId: 'String',
+          sports: 'Array',
+          days: 'Array',
+          hours: 'Integer',
+          minutes: 'Integer',
+          locals: 'Array',
+        },
+        description: 'Saves a notification in the system',
       },
     ];
-
     return endpoints;
   },
 };
