@@ -1,5 +1,4 @@
 const express = require('express');
-const date = require('../src/utils/scheduler');
 const newUser = require('./utils/saveNewUser');
 const saveNotification = require('./utils/saveNotification');
 const User = require('../src/models/User');
