@@ -52,7 +52,7 @@ function notificationSchedule() {
 
 function dailySchedule() {
   schedule.scheduleJob('0 0 3 * * *', () => {
-  notificationSchedule();
+    notificationSchedule();
   });
 }
 

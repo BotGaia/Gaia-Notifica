@@ -23,7 +23,7 @@ describe('Save User test', () => {
         res.body.user.notifications.should.eql([]);
         done();
       });
-  });
+  }).timeout(5000);
 
   it('Save user', (done) => {
     const user = new User('testId2');

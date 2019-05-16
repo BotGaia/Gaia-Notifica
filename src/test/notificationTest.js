@@ -15,12 +15,13 @@ describe('Notification test', () => {
     const notification = new Notification('testId62');
     notification.appendDay('test');
     notification.setSport('test');
-    notification.setTime('test');
+    notification.setTime('test', 'test');
     notification.appendLocal('test');
 
     notification.getDay(0).should.eql('test');
     notification.getSport().should.eql('test');
-    notification.getTime().should.eql('test');
+    notification.getMinutes().should.eql('test');
+    notification.getHours().should.eql('test');
     notification.getLocal(0).should.eql('test');
   });
 });
