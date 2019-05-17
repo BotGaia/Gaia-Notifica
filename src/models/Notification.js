@@ -1,55 +1,88 @@
+const mongoose = require('mongoose');
+const NotificationSchema = require('../db/notificationSchema');
+
+const NotificationModel = mongoose.model('NotificationModel', NotificationSchema);
+
 module.exports = class Notification {
   constructor(telegramId) {
-    this.telegramId = telegramId;
-    this.sport = '';
-    this.days = [];
-    this.hours = '';
-    this.minutes = '';
-    this.locals = [];
+    this.notification = new NotificationModel({
+      class: 'notification',
+      telegramId,
+      sport: '',
+      days: [],
+      hours: 0,
+      minutes: 0,
+      locals: [],
+    });
   }
 
   setTelegramId(telegramId) {
-    this.telegramId = telegramId;
+    this.notification.telegramId = telegramId;
   }
 
   getTelegramId() {
-    return this.telegramId;
+    return this.notification.telegramId;
   }
 
   setSport(sport) {
-    this.sport = sport;
+    this.notification.sport = sport;
   }
 
   getSport() {
-    return this.sport;
+    return this.notification.sport;
   }
 
-  appendDay(day) {
-    this.days.push(day);
+  setDay(days) {
+    this.notification.days = days;
   }
 
   getDay(index) {
-    return this.days[index];
+    return this.notification.days[index];
+  }
+
+  appendDay(day){
+    this.notification.days.push(day)
   }
 
   setTime(hours, minutes) {
-    this.hours = hours;
-    this.minutes = minutes;
+    this.notification.hours = hours;
+    this.notification.minutes = minutes;
   }
 
   getHours() {
-    return this.hours;
+    return this.notification.hours;
   }
 
   getMinutes() {
-    return this.minutes;
+    return this.notification.minutes;
   }
 
   appendLocal(local) {
-    this.locals.push(local);
+    this.notification.locals.push(local);
   }
 
   getLocal(index) {
-    return this.locals[index];
+    return this.notification.locals[index];
+  }
+
+  saveNotification() {
+    return new Promise((resolve) => {
+      this.notification.save().then(() => {
+        resolve();
+      });
+    });
+  }
+
+  findMe() {
+    return new Promise((resolve) => {
+      NotificationModel.findOne({ telegramId: this.notification.telegramId },
+        (err) => { if (err) { resolve(false); } }).then((notification) => {
+        if (notification) {
+          this.notification = notification;
+          resolve(true);
+        }
+        resolve(false);
+      });
+    });
   }
 };
