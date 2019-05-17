@@ -40,8 +40,12 @@ module.exports = class Notification {
     return this.notification.days[index];
   }
 
-  appendDay(day){
-    this.notification.days.push(day)
+  getDays() {
+    return this.notification.days;
+  }
+
+  appendDay(day) {
+    this.notification.days.push(day);
   }
 
   setTime(hours, minutes) {

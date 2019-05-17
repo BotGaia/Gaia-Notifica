@@ -15,7 +15,7 @@ describe('Notification test', () => {
     const notification = new Notification('testId63');
     notification.appendDay('test');
     notification.setSport('test');
-    notification.setTime(0,0);
+    notification.setTime(0, 0);
     notification.appendLocal('test');
 
     notification.getDay(0).should.eql('test');

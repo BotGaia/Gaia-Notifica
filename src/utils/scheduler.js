@@ -12,8 +12,8 @@ function getDailyNotifications(weekDay) {
   return new Promise((resolve) => {
     NotificationModel.find({ class: 'notification' }).then((notificationArray) => {
       for (let i = 0; i < notificationArray.length; i += 1) {
-        for (let k = 0; k < notificationArray[i].days.length; k += 1) {
-          if (notificationArray[i].days[k] === weekDay) {
+        for (let k = 0; k < notificationArray[i].getDays().length; k += 1) {
+          if (notificationArray[i].getDay(k) === weekDay) {
             dailyArray.push(notificationArray[i]);
           }
         }
@@ -32,9 +32,9 @@ function postNotification(notification) {
 }
 
 async function makeSchedule(notification) {
-  if (notification.minutes) {
-    schedule.scheduleJob(`${(notification.minutes).toString()} ${(notification.hours + 3).toString()} * * *`, () => {
-      postNotification(notification);
+  if (notification.getMinutes()) {
+    schedule.scheduleJob(`${(notification.getMinutes()).toString()} ${(notification.getHours() + 3).toString()} * * *`, () => {
+      postNotification(JSON.stringify(notification));
     });
   }
 }
