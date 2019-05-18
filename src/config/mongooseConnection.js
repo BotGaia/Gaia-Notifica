@@ -21,7 +21,6 @@ module.exports = {
     } else if (process.env.ENVIRONMENT === 'homolog') {
       mongoose.connect(`mongodb://${process.env.USER_DB}:${process.env.PASS_DB}@34.66.63.227/${process.env.DB}`,
         { useNewUrlParser: true }).then(() => {
-        console.log('aqui');
         resolve();
       }).catch();
     }

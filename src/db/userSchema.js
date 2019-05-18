@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
+  class: String,
   telegramId: String,
-  sport: String,
-  notificationDays: Array,
-  notificationTime: Array,
-  local: String,
+  notifications: Array,
 });
 
 module.exports = UserSchema;

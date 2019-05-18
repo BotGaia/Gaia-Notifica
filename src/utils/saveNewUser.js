@@ -5,10 +5,7 @@ module.exports = {
         resolve(user);
       } else {
         user.setTelegramId(jsonAnswer.telegramId);
-        user.setSport(jsonAnswer.sport);
-        user.setLocal(jsonAnswer.local);
-        user.setNotificationDays(jsonAnswer.notificationDays);
-        user.setNotificationTime(jsonAnswer.notificationTime);
+        user.setNotification(jsonAnswer);
         user.saveUser();
         resolve(user);
       }

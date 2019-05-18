@@ -6,14 +6,11 @@ const User = require('../models/User');
 const app = require('../index');
 const routes = require('../routes')(app);
 
-describe('/POST registerUser', () => {
+describe('Save User test', () => {
   it('Register User', (done) => {
     const mockJson = {
       telegramId: 'testId2',
-      sport: '',
-      local: '',
-      notificationDays: [''],
-      notificationTime: [''],
+      notifications: [''],
     };
 
     chai.request(routes)
@@ -23,16 +20,11 @@ describe('/POST registerUser', () => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.user.telegramId.should.eql('testId2');
-        res.body.user.sport.should.eql('');
-        res.body.user.local.should.eql('');
-        res.body.user.notificationDays.should.eql([['']]);
-        res.body.user.notificationTime.should.eql([['']]);
+        res.body.user.notifications.should.eql([]);
         done();
       });
-  });
-});
+  }).timeout(5000);
 
-describe('Save user', () => {
   it('Save user', (done) => {
     const user = new User('testId2');
 
