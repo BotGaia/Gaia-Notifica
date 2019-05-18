@@ -12,13 +12,13 @@ describe('Notification test', () => {
   });
 
   it('appends', () => {
-    const notification = new Notification('testId63');
+    const notification = new Notification('testId689');
     notification.appendDay('test');
     notification.setSport('test');
     notification.setTime(0, 0);
     notification.appendLocal('test');
 
-    notification.getDay(0).should.eql('test');
+    notification.getDays(0).should.eql('test');
     notification.getSport().should.eql('test');
     notification.getMinutes().should.eql(0);
     notification.getHours().should.eql(0);

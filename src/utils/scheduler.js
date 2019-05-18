@@ -31,7 +31,11 @@ function postNotification(notification) {
 }
 
 async function makeSchedule(notification) {
-  if (notification.minutes) {
+  if (notification.minutesBefore || notification.hoursBefore) {
+    schedule.scheduleJob(`${(notification.minutesBefore).toString()} ${(notification.hoursBefore + 3).toString()} * * *`, () => {
+      postNotification(JSON.stringify(notification));
+    });
+  } else if (notification.minutes) {
     schedule.scheduleJob(`${(notification.minutes).toString()} ${(notification.hours + 3).toString()} * * *`, () => {
       postNotification(JSON.stringify(notification));
     });

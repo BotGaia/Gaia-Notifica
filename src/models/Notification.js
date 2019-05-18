@@ -13,6 +13,11 @@ module.exports = class Notification {
       hours: 0,
       minutes: 0,
       locals: [],
+      hoursBefore: 0,
+      minutesBefore: 0,
+      day: 0,
+      month: 0,
+      year: 0,
     });
   }
 
@@ -24,6 +29,46 @@ module.exports = class Notification {
     return this.notification.telegramId;
   }
 
+  setHoursBefore(hoursBefore) {
+    this.notification.hoursBefore = hoursBefore;
+  }
+
+  getHoursBefore() {
+    return this.notification.hoursBefore;
+  }
+
+  setDay(day) {
+    this.notification.day = day;
+  }
+
+  getDay() {
+    return this.notification.day;
+  }
+
+  setMonth(month) {
+    this.notification.month = month;
+  }
+
+  getMonth() {
+    return this.notification.month;
+  }
+
+  setYear(year) {
+    this.notification.year = year;
+  }
+
+  getYear() {
+    return this.notification.year;
+  }
+
+  setMinutesBefore(minutesBefore) {
+    this.notification.minutesBefore = minutesBefore;
+  }
+
+  getMinutesBefore() {
+    return this.notification.minutesBefore;
+  }
+
   setSport(sport) {
     this.notification.sport = sport;
   }
@@ -32,20 +77,20 @@ module.exports = class Notification {
     return this.notification.sport;
   }
 
-  setDay(days) {
+  setDays(days) {
     this.notification.days = days;
   }
 
-  getDay(index) {
+  getDays(index) {
     return this.notification.days[index];
   }
 
-  getDays() {
+  getDaysArray() {
     return this.notification.days;
   }
 
-  appendDay(day) {
-    this.notification.days.push(day);
+  appendDay(weekday) {
+    this.notification.days.push(weekday);
   }
 
   setTime(hours, minutes) {
