@@ -24,7 +24,14 @@ function getDailyNotifications(weekDay) {
 
 function postNotification(notification) {
   return new Promise((resolve) => {
-    axios.post('http://68.183.43.29:30000/notify', notification).then((res) => {
+    let postUrl = '';
+    if (process.env.ENVIRONMENT === 'dev') {
+      postUrl = `http://${process.env.IP_ADDRESS}:3002/notify`;
+    } else if (process.env.ENVIRONMENT === 'homolog') {
+      postUrl = 'https://notifica.hml.botgaia.ga/notify';
+    }
+
+    axios.post(postUrl, notification).then((res) => {
       resolve(res.body);
     });
   });
