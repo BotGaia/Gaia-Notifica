@@ -66,8 +66,9 @@ deployHomolog:
     - source /root/.bashrc
     - gcloud auth activate-service-account --key-file ${SERVICE_ACCOUNT} --project=${GKE_PROJECT}
     - gcloud container clusters get-credentials gaia-cluster --zone us-central1-a --project gaia-240100
-    - kubectl delete -f k8s/gaia_notifica_hml.yaml
-    - kubectl apply -f k8s/gaia_notifica_hml.yaml
+    - kubectl delete svc gaia-notifica-hml
+    - kubectl delete deployments gaia-notifica-hml
+    - cat k8s/gaia_notifica_hml.yaml | sed "s/{{DB}}/$DB/g" | sed "s/{{PASS_DB}}/$PASS_DB/g" | sed "s/{{USER_DB}}/$USER_DB/g" | kubectl apply -f -
 
 deployProd:
   stage: deploy
@@ -78,5 +79,6 @@ deployProd:
     - source /root/.bashrc
     - gcloud auth activate-service-account --key-file ${SERVICE_ACCOUNT} --project=${GKE_PROJECT}
     - gcloud container clusters get-credentials gaia-cluster --zone us-central1-a --project gaia-240100
-    - kubectl delete -f k8s/gaia_notifica.yaml
-    - kubectl apply -f k8s/gaia_notifica.yaml
+    - kubectl delete svc gaia-notifica
+    - kubectl delete deployments gaia-notifica
+    - cat k8s/gaia_notifica.yaml | sed "s/{{DB}}/$DB/g" | sed "s/{{PASS_DB}}/$PASS_DB/g" | sed "s/{{USER_DB}}/$USER_DB/g" | kubectl apply -f -

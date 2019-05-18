@@ -26,13 +26,13 @@ spec:
       containers:
       - env:
         - name: DB
-          value: ${DB}
+          value: {{DB}}
         - name: ENVIRONMENT
           value: homolog
         - name: PASS_DB
-          value: ${PASS_DB}
+          value: {{PASS_DB}}
         - name: USER_DB
-          value: ${USER_DB}
+          value: {{USER_DB}}
         image: caleberios/gaia-notifica:homolog
         imagePullPolicy: Always
         name: gaia-notifica-hml
