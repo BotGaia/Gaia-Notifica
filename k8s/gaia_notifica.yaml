@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gaia-notifica
+spec:
+  ports:
+  - port: 443
+    targetPort: 3003
+  selector:
+    app: gaia-notifica
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gaia-notifica
+spec:
+  selector:
+    matchLabels:
+      app: gaia-notifica
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: gaia-notifica
+    spec:
+      containers:
+      - env:
+        - name: DB
+          value: ${DB}
+        - name: ENVIRONMENT
+          value: production
+        - name: PASS_DB
+          value: ${PASS_DB}
+        - name: USER_DB
+          value: ${USER_DB}
+        image: caleberios/gaia-notifica:latest
+        imagePullPolicy: Always
+        name: gaia-notifica
+        ports:
+        - containerPort: 3003
