@@ -8,7 +8,7 @@ const mockJson = {
   telegramId: 'testId38',
   sport: 'testSport',
   days: [8],
-  hours: 12,
+  hour: 12,
   minutes: 30,
   locals: ['Fabrica do Papai Noel'],
 };

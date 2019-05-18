@@ -7,7 +7,7 @@ module.exports = {
     const notification = new Notification(requestBody.telegramId);
     const dateInfo = TreatTime.getDateInfo();
     if (requestBody.minutesBefore || requestBody.hoursBefore) {
-      const { hours: userHours } = requestBody;
+      const { hour: userHours } = requestBody;
       const { minutes: userMinutes } = requestBody;
       const { minutesBefore: minBefore } = requestBody;
       const { hoursBefore: hourBefore } = requestBody;
@@ -15,7 +15,7 @@ module.exports = {
       notification.setHoursBefore(targetTime[0]);
       notification.setMinutesBefore(targetTime[1]);
     }
-    notification.setTime(requestBody.hours, requestBody.minutes);
+    notification.setTime(requestBody.hour, requestBody.minutes);
     notification.setSport(requestBody.sport);
     notification.setDay(dateInfo[0]);
     notification.setMonth(dateInfo[1]);

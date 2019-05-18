@@ -10,7 +10,7 @@ module.exports = class Notification {
       telegramId,
       sport: '',
       days: [],
-      hours: 0,
+      hour: 0,
       minutes: 0,
       locals: [],
       hoursBefore: 0,
@@ -93,13 +93,13 @@ module.exports = class Notification {
     this.notification.days.push(weekday);
   }
 
-  setTime(hours, minutes) {
-    this.notification.hours = hours;
+  setTime(hour, minutes) {
+    this.notification.hour = hour;
     this.notification.minutes = minutes;
   }
 
-  getHours() {
-    return this.notification.hours;
+  getHour() {
+    return this.notification.hour;
   }
 
   getMinutes() {
