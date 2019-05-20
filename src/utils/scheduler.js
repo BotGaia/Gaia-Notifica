@@ -31,7 +31,7 @@ function postNotification(notification) {
       postUrl = 'https://notifica.hml.botgaia.ga/notify';
     }
 
-    axios.post(postUrl, notification).then((res) => {
+    axios.post(postUrl, notification.notification).then((res) => {
       resolve(res.body);
     });
   });
@@ -40,11 +40,11 @@ function postNotification(notification) {
 async function makeSchedule(notification) {
   if (notification.minutesBefore || notification.hoursBefore) {
     schedule.scheduleJob(`${(notification.minutesBefore).toString()} ${(notification.hoursBefore + 3).toString()} * * *`, () => {
-      postNotification(JSON.stringify(notification));
+      postNotification(notification);
     });
   } else if (notification.minutes) {
     schedule.scheduleJob(`${(notification.minutes).toString()} ${(notification.hours + 3).toString()} * * *`, () => {
-      postNotification(JSON.stringify(notification));
+      postNotification(notification);
     });
   }
 }

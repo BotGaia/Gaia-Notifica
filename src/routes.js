@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 router.post('/createNotification', (req, res) => {
   saveNotification.saveNotification(req.body).then((notification) => {
-    res.send(notification);
+    res.send(notification.notification);
   });
 });
 

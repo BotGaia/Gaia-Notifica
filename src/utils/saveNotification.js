@@ -6,7 +6,8 @@ module.exports = {
   saveNotification: requestBody => new Promise((resolve) => {
     const notification = new Notification(requestBody.telegramId);
     const dateInfo = TreatTime.getDateInfo();
-    if (requestBody.minutesBefore || requestBody.hoursBefore) {
+
+    if (requestBody.minutesBefore !== 0 || requestBody.hoursBefore !== 0) {
       const { hour: userHours } = requestBody;
       const { minutes: userMinutes } = requestBody;
       const { minutesBefore: minBefore } = requestBody;

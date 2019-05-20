@@ -5,7 +5,7 @@ const NotificationSchema = new mongoose.Schema({
   telegramId: String,
   sport: String,
   days: Array,
-  hours: Number,
+  hour: Number,
   minutes: Number,
   locals: Array,
   hoursBefore: Number,
