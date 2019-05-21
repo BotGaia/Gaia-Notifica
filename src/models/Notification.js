@@ -15,9 +15,7 @@ module.exports = class Notification {
       locals: [],
       hoursBefore: 0,
       minutesBefore: 0,
-      day: 0,
-      month: 0,
-      year: 0,
+      date: 0,
     });
   }
 
@@ -37,28 +35,12 @@ module.exports = class Notification {
     return this.notification.hoursBefore;
   }
 
-  setDay(day) {
-    this.notification.day = day;
+  setDate(date) {
+    this.notification.date = new Date(date);
   }
 
-  getDay() {
-    return this.notification.day;
-  }
-
-  setMonth(month) {
-    this.notification.month = month;
-  }
-
-  getMonth() {
-    return this.notification.month;
-  }
-
-  setYear(year) {
-    this.notification.year = year;
-  }
-
-  getYear() {
-    return this.notification.year;
+  getDate() {
+    return this.notification.date;
   }
 
   setMinutesBefore(minutesBefore) {

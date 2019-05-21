@@ -10,26 +10,22 @@ function getDailyNotifications(weekDay) {
   const dailyArray = new Array([]);
   return new Promise((resolve) => {
     NotificationModel.find({ class: 'notification' }).then((notificationArray) => {
-      for (let i = 0; i < notificationArray.length; i += 1) {
-        for (let k = 0; k < notificationArray[i].days.length; k += 1) {
-          if (notificationArray[i].days[k] === weekDay) {
-            dailyArray.push(notificationArray[i]);
+      notificationArray.forEach((notification) => {
+        notification.days.forEach((day) => {
+          if (day === weekDay) {
+            dailyArray.push(day);
           }
-        }
-      }
-      resolve(dailyArray);
+        });
+      });
     });
+    resolve(dailyArray);
   });
 }
 
+
 function postNotification(notification) {
   return new Promise((resolve) => {
-    let postUrl = '';
-    if (process.env.ENVIRONMENT === 'dev') {
-      postUrl = `http://${process.env.IP_ADDRESS}:3002/notify`;
-    } else if (process.env.ENVIRONMENT === 'homolog') {
-      postUrl = 'https://notifica.hml.botgaia.ga/notify';
-    }
+    const postUrl = `${global.URL_CLIMATE}/notifyUser`;
 
     axios.post(postUrl, notification.notification).then((res) => {
       resolve(res.body);

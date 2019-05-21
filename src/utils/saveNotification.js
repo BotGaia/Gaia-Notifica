@@ -1,11 +1,13 @@
 const Notification = require('../models/Notification');
 const timeMath = require('./timeMath');
-const TreatTime = require('./treatTime');
+
 
 module.exports = {
+
   saveNotification: requestBody => new Promise((resolve) => {
     const notification = new Notification(requestBody.telegramId);
-    const dateInfo = TreatTime.getDateInfo();
+    const date = new Date();
+    date.setHours(date.getHours() - 3);
 
     if (requestBody.minutesBefore !== 0 || requestBody.hoursBefore !== 0) {
       const { hour: userHours } = requestBody;
@@ -18,9 +20,7 @@ module.exports = {
     }
     notification.setTime(requestBody.hour, requestBody.minutes);
     notification.setSport(requestBody.sport);
-    notification.setDay(dateInfo[0]);
-    notification.setMonth(dateInfo[1]);
-    notification.setYear(dateInfo[2]);
+    notification.setDate(date.getTime());
 
     requestBody.days.forEach((element) => {
       notification.appendDay(element);

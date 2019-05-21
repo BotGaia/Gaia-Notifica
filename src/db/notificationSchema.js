@@ -10,9 +10,7 @@ const NotificationSchema = new mongoose.Schema({
   locals: Array,
   hoursBefore: Number,
   minutesBefore: Number,
-  day: Number,
-  month: Number,
-  year: Number,
+  date: Date,
 });
 
 module.exports = NotificationSchema;

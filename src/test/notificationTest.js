@@ -15,13 +15,9 @@ describe('Notification test', () => {
     const notification = new Notification('testId689');
     notification.appendDay('test');
     notification.setSport('test');
-    notification.setTime(0, 0);
     notification.appendLocal('test');
     notification.setHoursBefore(0);
     notification.setMinutesBefore(0);
-    notification.setDay(0);
-    notification.setMonth(0);
-    notification.setYear(0);
 
     notification.getDays(0).should.eql('test');
     notification.getSport().should.eql('test');
@@ -30,8 +26,5 @@ describe('Notification test', () => {
     notification.getLocal(0).should.eql('test');
     notification.getHoursBefore().should.eql(0);
     notification.getMinutesBefore().should.eql(0);
-    notification.getDay().should.eql(0);
-    notification.getMonth().should.eql(0);
-    notification.getYear().should.eql(0);
   });
 });

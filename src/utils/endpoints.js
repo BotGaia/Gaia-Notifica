@@ -3,24 +3,12 @@ module.exports = {
     const endpoints = [
       {
         type: 'POST',
-        endpoint: '/userRegister',
-        JSON: {
-          telegramId: 'String',
-          sport: 'String',
-          notificationDays: 'Array',
-          notificationTime: 'Array',
-          local: 'String',
-        },
-        description: 'Receives the user information in JSON format and saves its preferences',
-      },
-      {
-        type: 'POST',
         endpoint: '/createNotification',
         JSON: {
           telegramId: 'String',
-          sports: 'Array',
+          sport: 'String',
           days: 'Array',
-          hours: 'Integer',
+          hour: 'Integer',
           minutes: 'Integer',
           locals: 'Array',
         },
