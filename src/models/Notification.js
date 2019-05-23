@@ -1,55 +1,119 @@
+const mongoose = require('mongoose');
+const NotificationSchema = require('../db/notificationSchema');
+
+const NotificationModel = mongoose.model('NotificationModel', NotificationSchema);
+
 module.exports = class Notification {
   constructor(telegramId) {
-    this.telegramId = telegramId;
-    this.sport = '';
-    this.days = [];
-    this.hours = '';
-    this.minutes = '';
-    this.locals = [];
+    this.notification = new NotificationModel({
+      class: 'notification',
+      telegramId,
+      sport: '',
+      days: [],
+      hour: 0,
+      minutes: 0,
+      locals: [],
+      hoursBefore: 0,
+      minutesBefore: 0,
+      date: 0,
+    });
   }
 
   setTelegramId(telegramId) {
-    this.telegramId = telegramId;
+    this.notification.telegramId = telegramId;
   }
 
   getTelegramId() {
-    return this.telegramId;
+    return this.notification.telegramId;
+  }
+
+  setHoursBefore(hoursBefore) {
+    this.notification.hoursBefore = hoursBefore;
+  }
+
+  getHoursBefore() {
+    return this.notification.hoursBefore;
+  }
+
+  setDate(date) {
+    this.notification.date = new Date(date);
+  }
+
+  getDate() {
+    return this.notification.date;
+  }
+
+  setMinutesBefore(minutesBefore) {
+    this.notification.minutesBefore = minutesBefore;
+  }
+
+  getMinutesBefore() {
+    return this.notification.minutesBefore;
   }
 
   setSport(sport) {
-    this.sport = sport;
+    this.notification.sport = sport;
   }
 
   getSport() {
-    return this.sport;
+    return this.notification.sport;
   }
 
-  appendDay(day) {
-    this.days.push(day);
+  setDays(days) {
+    this.notification.days = days;
   }
 
-  getDay(index) {
-    return this.days[index];
+  getDays(index) {
+    return this.notification.days[index];
   }
 
-  setTime(hours, minutes) {
-    this.hours = hours;
-    this.minutes = minutes;
+  getDaysArray() {
+    return this.notification.days;
   }
 
-  getHours() {
-    return this.hours;
+  appendDay(weekday) {
+    this.notification.days.push(weekday);
+  }
+
+  setTime(hour, minutes) {
+    this.notification.hour = hour;
+    this.notification.minutes = minutes;
+  }
+
+  getHour() {
+    return this.notification.hour;
   }
 
   getMinutes() {
-    return this.minutes;
+    return this.notification.minutes;
   }
 
   appendLocal(local) {
-    this.locals.push(local);
+    this.notification.locals.push(local);
   }
 
   getLocal(index) {
-    return this.locals[index];
+    return this.notification.locals[index];
+  }
+
+  saveNotification() {
+    return new Promise((resolve) => {
+      this.notification.save().then(() => {
+        resolve();
+      });
+    });
+  }
+
+  findMe() {
+    return new Promise((resolve) => {
+      NotificationModel.findOne({ telegramId: this.notification.telegramId },
+        (err) => { if (err) { resolve(false); } }).then((notification) => {
+        if (notification) {
+          this.notification = notification;
+          resolve(true);
+        }
+        resolve(false);
+      });
+    });
   }
 };

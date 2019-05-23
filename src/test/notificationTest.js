@@ -12,16 +12,19 @@ describe('Notification test', () => {
   });
 
   it('appends', () => {
-    const notification = new Notification('testId62');
+    const notification = new Notification('testId689');
     notification.appendDay('test');
     notification.setSport('test');
-    notification.setTime('test', 'test');
     notification.appendLocal('test');
+    notification.setHoursBefore(0);
+    notification.setMinutesBefore(0);
 
-    notification.getDay(0).should.eql('test');
+    notification.getDays(0).should.eql('test');
     notification.getSport().should.eql('test');
-    notification.getMinutes().should.eql('test');
-    notification.getHours().should.eql('test');
+    notification.getMinutes().should.eql(0);
+    notification.getHour().should.eql(0);
     notification.getLocal(0).should.eql('test');
+    notification.getHoursBefore().should.eql(0);
+    notification.getMinutesBefore().should.eql(0);
   });
 });

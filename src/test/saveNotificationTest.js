@@ -8,16 +8,19 @@ const mockJson = {
   telegramId: 'testId38',
   sport: 'testSport',
   days: [8],
-  time: (new Date()).setHours(0, 0, 0),
+  hour: 12,
+  minutes: 30,
   locals: ['Fabrica do Papai Noel'],
+  hoursBefore: 0,
+  minutesBefore: 15,
 };
 
 describe('Save notification', () => {
   it('Save notification', (done) => {
-    SaveNotification.saveNotification(mockJson).then((user) => {
-      user.getNotification(0).telegramId.should.eql('testId38');
-      user.getNotification(0).sport.should.eql('testSport');
+    SaveNotification.saveNotification(mockJson).then((notification) => {
+      notification.getTelegramId().should.eql('testId38');
+      notification.getSport().should.eql('testSport');
       done();
     });
-  });
+  }).timeout(5000);
 });

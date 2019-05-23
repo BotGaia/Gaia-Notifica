@@ -1,40 +1,44 @@
 const schedule = require('node-schedule');
 const mongoose = require('mongoose');
 const axios = require('axios');
-const UserSchema = require('../db/userSchema');
+const NotificationSchema = require('../db/notificationSchema');
 const TreatTime = require('./treatTime');
 
-const UserModel = mongoose.model('UserModel', UserSchema);
+const NotificationModel = mongoose.model('NotificationModel', NotificationSchema);
 
 function getDailyNotifications(weekDay) {
-  const notificationArray = new Array([]);
-
+  const dailyArray = new Array([]);
   return new Promise((resolve) => {
-    UserModel.find({ class: 'user' }).then((userArray) => {
-      for (let i = 0; i < userArray.length; i += 1) {
-        for (let j = 0; j < userArray[i].notifications.length; j += 1) {
-          for (let k = 0; k < userArray[i].notifications[j].days.length; k += 1) {
-            if (userArray[i].notifications[j].days[k] === weekDay) {
-              notificationArray.push(userArray[i].notifications[j]);
-            }
+    NotificationModel.find({ class: 'notification' }).then((notificationArray) => {
+      notificationArray.forEach((notification) => {
+        notification.days.forEach((day) => {
+          if (day === weekDay) {
+            dailyArray.push(day);
           }
-        }
-      }
-      resolve(notificationArray);
+        });
+      });
     });
+    resolve(dailyArray);
   });
 }
 
+
 function postNotification(notification) {
   return new Promise((resolve) => {
-    axios.post('http://68.183.43.29:30000/notify', notification).then((res) => {
+    const postUrl = `${global.URL_CLIMATE}/notifyUser`;
+
+    axios.post(postUrl, notification.notification).then((res) => {
       resolve(res.body);
     });
   });
 }
 
 async function makeSchedule(notification) {
-  if (notification.minutes) {
+  if (notification.minutesBefore || notification.hoursBefore) {
+    schedule.scheduleJob(`${(notification.minutesBefore).toString()} ${(notification.hoursBefore + 3).toString()} * * *`, () => {
+      postNotification(notification);
+    });
+  } else if (notification.minutes) {
     schedule.scheduleJob(`${(notification.minutes).toString()} ${(notification.hours + 3).toString()} * * *`, () => {
       postNotification(notification);
     });
@@ -43,9 +47,9 @@ async function makeSchedule(notification) {
 
 function notificationSchedule() {
   const weekDay = TreatTime.getDateTime();
-  getDailyNotifications(weekDay).then((notificationArray) => {
-    for (let i = 0; i < notificationArray.length; i += 1) {
-      makeSchedule(notificationArray[i]);
+  getDailyNotifications(weekDay).then((dailyArray) => {
+    for (let i = 0; i < dailyArray.length; i += 1) {
+      makeSchedule(dailyArray[i]);
     }
   });
 }

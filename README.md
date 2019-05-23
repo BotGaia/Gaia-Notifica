@@ -35,5 +35,4 @@ Aqui se encontra todos os endpoints desse serviço. Todos os endpoints se encont
 
 |Requisição|Endpoint|Parâmetro:Tipo|Descrição|
 |:--------:|:------:|:------------:|:-------:|
-|POST|/userRegister|telegramId: String,<br> sport: String,<br> notificationDays: Array,<br> notificationTime: Array,<br> local: String|Recebe as informações de um user em formato JSON e salva suas preferências|
 |POST|/createNotification|telegramId: String, <br> sports: Array, <br> days: Array, <br> hours: Integer, <br> minutes: Integer, <br> locals: Array|Salva uma notificação no sistema.|

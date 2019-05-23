@@ -14,7 +14,7 @@ describe('Scheduler test', () => {
   });
 
   it('getDailyNotifications()', (done) => {
-    Scheduler.getDailyNotifications().then((notificationArray) => {
+    Scheduler.getDailyNotifications(0).then((notificationArray) => {
       notificationArray.length.should.be.eql(1);
       done();
     });
