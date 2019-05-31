@@ -1,6 +1,11 @@
 [![pipeline status](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/pipeline.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![coverage report](https://gitlab.com/botgaia/Gaia-Notifica/badges/master/coverage.svg)](https://gitlab.com/botgaia/Gaia-Notifica/commits/master)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# DEPRECATED
+
+Esse repositório não será mais utilizado, pois como estamos utilizando microserviços, foi decidido que esse repositório foi transferido para [Gaia-Esporte](https://github.com/BotGaia/Gaia-Esporte)
 
 # Gaia-Notifica
 
