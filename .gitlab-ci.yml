@@ -1,0 +1,83 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  LATEST_VER_HML: caleberios/gaia-notifica:homolog
+  LATEST_VER_PROD: caleberios/gaia-notifica:latest
+
+stages:
+  - build
+  - quality
+  - pushImage
+  - deploy
+
+installDependencies:
+  stage: build
+  image: node:alpine
+  script:
+    - npm install
+
+buildLocal:
+  stage: build
+  script:
+    - docker build .
+
+testCheck:
+  stage: quality
+  before_script:
+    - apk add --no-cache py-pip python-dev libffi-dev openssl-dev gcc libc-dev make
+    - pip install docker-compose
+  script:
+    - docker-compose run gaianotifica npm run test
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+
+staticAnalysis:
+  stage: quality
+  image: node:alpine
+  script:
+    - npm install
+    - npm run lint
+
+pushHomolog:
+  stage: pushImage
+  only:
+    - dev
+  script:
+    - docker build -t $LATEST_VER_HML .
+    - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
+    - docker push $LATEST_VER_HML && docker image rm $LATEST_VER_HML
+
+pushProd:
+  stage: pushImage
+  only:
+    - master
+  script:
+    - docker build -t $LATEST_VER_PROD .
+    - echo "$REGISTRY_PASSWORD" | docker login -u "$REGISTRY_USER" --password-stdin
+    - docker push $LATEST_VER_PROD && docker image rm $LATEST_VER_PROD
+
+deployHomolog:
+  stage: deploy
+  image: google/cloud-sdk
+  only:
+    - dev
+  script:
+    - source /root/.bashrc
+    - gcloud auth activate-service-account --key-file ${SERVICE_ACCOUNT} --project=${GKE_PROJECT}
+    - gcloud container clusters get-credentials gaia-cluster --zone us-central1-a --project gaia-240100
+    - kubectl delete deployment.apps/gaia-notifica-hml service/gaia-notifica-hml
+    - cat k8s/gaia_notifica_hml.yaml | sed "s/{{DB}}/$DB/g" | sed "s/{{PASS_DB}}/$PASS_DB/g" | sed "s/{{USER_DB}}/$USER_DB/g" | kubectl apply -f -
+
+deployProd:
+  stage: deploy
+  image: google/cloud-sdk
+  only:
+    - master
+  script:
+    - source /root/.bashrc
+    - gcloud auth activate-service-account --key-file ${SERVICE_ACCOUNT} --project=${GKE_PROJECT}
+    - gcloud container clusters get-credentials gaia-cluster --zone us-central1-a --project gaia-240100
+    - kubectl delete deployment.apps/gaia-notifica service/gaia-notifica
+    - cat k8s/gaia_notifica.yaml | sed "s/{{DB}}/$DB/g" | sed "s/{{PASS_DB}}/$PASS_DB/g" | sed "s/{{USER_DB}}/$USER_DB/g" | kubectl apply -f -
